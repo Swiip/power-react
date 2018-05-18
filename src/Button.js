@@ -1,6 +1,5 @@
-import React from "react";
-
 import {
+  html,
   css,
   component,
   withState,
@@ -10,7 +9,7 @@ import {
 } from "./framework";
 
 const Green = component(
-  withStyle(() => css`
+  withStyle(css`
     color: green;
   `),
   withMarkup("span")
@@ -27,11 +26,13 @@ const Button = component(
       color: ${name === "World" ? "black" : "red"};
     `
   ),
-  withMarkup(({ name, toggle, className }) => (
-    <button className={className} name={name} onClick={toggle}>
-      Hello <Green>{name}</Green>!
-    </button>
-  ))
+  withMarkup(
+    ({ name, toggle, className }) => html`
+      <button className=${className} onClick=${toggle}>
+        Hello <${Green}>${name}</${Green}>!
+      </button>
+    `
+  )
 );
 
 export default Button;
