@@ -6,7 +6,7 @@ import {
   withHandlers,
   withMarkup,
   withStyle
-} from "./framework";
+} from "../lib";
 
 const Green = component(
   withStyle(css`

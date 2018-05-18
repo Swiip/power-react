@@ -3,12 +3,13 @@ import styled from "styled-components";
 import { compose } from "recompose";
 import hyperx from "hyperx";
 
-export const html = hyperx((Component, props, children) => {
-  return createElement(Component, props, ...children);
-});
-
+export { render } from "react-dom";
 export * from "styled-components";
 export * from "recompose";
+
+export const html = hyperx((Component, props, children) => {
+  return createElement(Component, props, ...(children || {}));
+});
 
 export const withMarkup = Component => () => {
   if (typeof Component === "function") {
